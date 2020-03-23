@@ -1,0 +1,100 @@
+DIGEST fa5bd6375b5c6f9f07eb888e06a8a676
+Ftypes
+ind 182:186 <> ilist
+constr 209:211 <> Nil
+constr 227:230 <> Cons
+R195:198 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R192:194 Coq.Init.Datatypes <> nat ind
+R215:219 types <> ilist ind
+R221:221 types <> A var
+R244:246 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R256:260 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R261:265 types <> ilist ind
+R270:270 Coq.Init.Datatypes <> S constr
+R272:272 types <> n var
+R267:267 types <> A var
+R247:251 types <> ilist ind
+R255:255 types <> n var
+R253:253 types <> A var
+R243:243 types <> A var
+R282:290 types <> ilist_ind scheme
+ind 304:310 <> message
+constr 343:346 <> Mvar
+constr 399:399 <> O
+constr 432:432 <> N
+constr 464:477 <> ifm_then_else_
+constr 518:521 <> pair
+constr 554:556 <> pi1
+constr 579:581 <> pi2
+constr 604:605 <> to
+constr 629:629 <> L
+constr 652:652 <> f
+ind 726:729 <> Bool
+constr 763:766 <> Bvar
+constr 783:786 <> TRue
+constr 796:800 <> FAlse
+constr 810:812 <> eqb
+constr 839:841 <> eqm
+constr 872:885 <> ifb_then_else_
+R352:355 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R356:362 types <> message ind
+R349:351 Coq.Init.Datatypes <> nat ind
+R402:408 types <> message ind
+R438:441 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R442:448 types <> message ind
+R435:437 Coq.Init.Datatypes <> nat ind
+R484:487 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R495:497 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R505:507 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R508:514 types <> message ind
+R498:504 types <> message ind
+R488:494 types <> message ind
+R480:483 types <> Bool ind
+R531:533 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R541:543 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R544:550 types <> message ind
+R534:540 types <> message ind
+R524:530 types <> message ind
+R566:568 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R569:575 types <> message ind
+R559:565 types <> message ind
+R591:593 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R594:600 types <> message ind
+R584:590 types <> message ind
+R615:618 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R619:625 types <> message ind
+R608:614 types <> message ind
+R639:641 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R642:648 types <> message ind
+R632:638 types <> message ind
+R680:683 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R684:690 types <> message ind
+R665:669 types <> ilist ind
+R679:679 types <> n var
+R671:677 types <> message ind
+R772:775 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R776:779 types <> Bool ind
+R769:771 Coq.Init.Datatypes <> nat ind
+R789:792 types <> Bool ind
+R803:806 types <> Bool ind
+R820:823 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R828:831 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R832:835 types <> Bool ind
+R824:827 types <> Bool ind
+R816:819 types <> Bool ind
+R852:854 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R862:864 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R865:868 types <> Bool ind
+R855:861 types <> message ind
+R845:851 types <> message ind
+R894:897 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R902:905 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R910:913 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R914:917 types <> Bool ind
+R906:909 types <> Bool ind
+R898:901 types <> Bool ind
+R890:893 types <> Bool ind
+R982:995 types <> ifm_then_else_ constr
+not 948:948 <> :::'If'_x_'then'_x_'else'_x
+R1206:1219 types <> ifb_then_else_ constr
+not 1172:1172 <> :::'IF'_x_'then'_x_'else'_x

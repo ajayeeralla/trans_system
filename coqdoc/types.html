@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<link href="coqdoc.css" rel="stylesheet" type="text/css" />
+<title>types</title>
+</head>
+
+<body>
+
+<div id="page">
+
+<div id="header">
+</div>
+
+<div id="main">
+
+<h1 class="libtitle">Library types</h1>
+
+<div class="code">
+
+<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+Mutually dependent inductive types: <span class="inlinecode"><span class="id" title="var">Bool</span></span> and <span class="inlinecode"><span class="id" title="var">message</span></span> 
+Note that type <span class="inlinecode"><span class="id" title="var">Bool</span></span> is different from the built-in type <span class="inlinecode"><span class="id" title="var">bool</span></span>
+  <span class="inlinecode"><span class="id" title="var">ilist</span></span>: length-indexed list 
+</div>
+<div class="code">
+
+<br/>
+<span class="id" title="keyword">Inductive</span> <a name="ilist"><span class="id" title="inductive">ilist</span></a> <span class="id" title="var">A</span> : <a class="idref" href="http://coq.inria.fr/stdlib//Coq.Init.Datatypes.html#nat"><span class="id" title="inductive">nat</span></a> <a class="idref" href="http://coq.inria.fr/stdlib//Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">-&gt;</span></a> <span class="id" title="keyword">Type</span> :=<br/>
+| <a name="Nil"><span class="id" title="constructor">Nil</span></a> : <a class="idref" href="types.html#ilist"><span class="id" title="inductive">ilist</span></a> <a class="idref" href="types.html#A"><span class="id" title="variable">A</span></a> 0<br/>
+| <a name="Cons"><span class="id" title="constructor">Cons</span></a>: <span class="id" title="keyword">forall</span> <span class="id" title="var">n</span>, <a class="idref" href="types.html#A"><span class="id" title="variable">A</span></a><a class="idref" href="http://coq.inria.fr/stdlib//Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">-&gt;</span></a> <a class="idref" href="types.html#ilist"><span class="id" title="inductive">ilist</span></a> <a class="idref" href="types.html#A"><span class="id" title="variable">A</span></a> <a class="idref" href="types.html#n"><span class="id" title="variable">n</span></a>  <a class="idref" href="http://coq.inria.fr/stdlib//Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">-&gt;</span></a> <a class="idref" href="types.html#ilist"><span class="id" title="inductive">ilist</span></a> <a class="idref" href="types.html#A"><span class="id" title="variable">A</span></a> (<a class="idref" href="http://coq.inria.fr/stdlib//Coq.Init.Datatypes.html#S"><span class="id" title="constructor">S</span></a> <a class="idref" href="types.html#n"><span class="id" title="variable">n</span></a>).<br/>
+
+<br/>
+<span class="id" title="keyword">Type</span> <a class="idref" href="types.html#ilist_ind"><span class="id" title="definition">ilist_ind</span></a>.<br/>
+
+<br/>
+<span class="id" title="keyword">Inductive</span> <a name="message"><span class="id" title="inductive">message</span></a>: <span class="id" title="keyword">Type</span> :=<br/>
+</div>
+
+<div class="doc">
+Core symbols 
+</div>
+<div class="code">
+| <a name="Mvar"><span class="id" title="constructor">Mvar</span></a>: <a class="idref" href="http://coq.inria.fr/stdlib//Coq.Init.Datatypes.html#nat"><span class="id" title="inductive">nat</span></a> <a class="idref" href="http://coq.inria.fr/stdlib//Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">-&gt;</span></a> <a class="idref" href="types.html#message"><span class="id" title="inductive">message</span></a>  </div>
+
+<div class="doc">
+Variable of type message 
+</div>
+<div class="code">
+| <a name="O"><span class="id" title="constructor">O</span></a>: <a class="idref" href="types.html#message"><span class="id" title="inductive">message</span></a></div>
+
+<div class="doc">
+Empty message 
+</div>
+<div class="code">
+| <a name="N"><span class="id" title="constructor">N</span></a>: <a class="idref" href="http://coq.inria.fr/stdlib//Coq.Init.Datatypes.html#nat"><span class="id" title="inductive">nat</span></a> <a class="idref" href="http://coq.inria.fr/stdlib//Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">-&gt;</span></a> <a class="idref" href="types.html#message"><span class="id" title="inductive">message</span></a></div>
+
+<div class="doc">
+Names 
+</div>
+<div class="code">
+| <a name="ifm_then_else_"><span class="id" title="constructor">ifm_then_else_</span></a>: <a class="idref" href="types.html#Bool"><span class="id" title="inductive">Bool</span></a> <a class="idref" href="http://coq.inria.fr/stdlib//Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">-&gt;</span></a> <a class="idref" href="types.html#message"><span class="id" title="inductive">message</span></a><a class="idref" href="http://coq.inria.fr/stdlib//Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">-&gt;</span></a> <a class="idref" href="types.html#message"><span class="id" title="inductive">message</span></a><a class="idref" href="http://coq.inria.fr/stdlib//Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">-&gt;</span></a> <a class="idref" href="types.html#message"><span class="id" title="inductive">message</span></a><br/>
+| <a name="pair"><span class="id" title="constructor">pair</span></a>: <a class="idref" href="types.html#message"><span class="id" title="inductive">message</span></a><a class="idref" href="http://coq.inria.fr/stdlib//Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">-&gt;</span></a> <a class="idref" href="types.html#message"><span class="id" title="inductive">message</span></a><a class="idref" href="http://coq.inria.fr/stdlib//Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">-&gt;</span></a> <a class="idref" href="types.html#message"><span class="id" title="inductive">message</span></a><br/>
+| <a name="pi1"><span class="id" title="constructor">pi1</span></a>: <a class="idref" href="types.html#message"><span class="id" title="inductive">message</span></a><a class="idref" href="http://coq.inria.fr/stdlib//Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">-&gt;</span></a> <a class="idref" href="types.html#message"><span class="id" title="inductive">message</span></a><br/>
+| <a name="pi2"><span class="id" title="constructor">pi2</span></a>: <a class="idref" href="types.html#message"><span class="id" title="inductive">message</span></a><a class="idref" href="http://coq.inria.fr/stdlib//Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">-&gt;</span></a> <a class="idref" href="types.html#message"><span class="id" title="inductive">message</span></a><br/>
+| <a name="to"><span class="id" title="constructor">to</span></a>: <a class="idref" href="types.html#message"><span class="id" title="inductive">message</span></a> <a class="idref" href="http://coq.inria.fr/stdlib//Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">-&gt;</span></a> <a class="idref" href="types.html#message"><span class="id" title="inductive">message</span></a><br/>
+| <a name="L"><span class="id" title="constructor">L</span></a>: <a class="idref" href="types.html#message"><span class="id" title="inductive">message</span></a><a class="idref" href="http://coq.inria.fr/stdlib//Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">-&gt;</span></a> <a class="idref" href="types.html#message"><span class="id" title="inductive">message</span></a><br/>
+| <a name="f"><span class="id" title="constructor">f</span></a>: <span class="id" title="keyword">forall</span> <span class="id" title="var">n</span>, <a class="idref" href="types.html#ilist"><span class="id" title="inductive">ilist</span></a> <a class="idref" href="types.html#message"><span class="id" title="inductive">message</span></a> <a class="idref" href="types.html#n"><span class="id" title="variable">n</span></a> <a class="idref" href="http://coq.inria.fr/stdlib//Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">-&gt;</span></a> <a class="idref" href="types.html#message"><span class="id" title="inductive">message</span></a></div>
+
+<div class="doc">
+Attacker's computation 
+</div>
+<div class="code">
+<span class="id" title="keyword">with</span> <a name="Bool"><span class="id" title="inductive">Bool</span></a> : <span class="id" title="keyword">Type</span> :=<br/>
+</div>
+
+<div class="doc">
+Core symbols 
+</div>
+<div class="code">
+| <a name="Bvar"><span class="id" title="constructor">Bvar</span></a>: <a class="idref" href="http://coq.inria.fr/stdlib//Coq.Init.Datatypes.html#nat"><span class="id" title="inductive">nat</span></a> <a class="idref" href="http://coq.inria.fr/stdlib//Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">-&gt;</span></a> <a class="idref" href="types.html#Bool"><span class="id" title="inductive">Bool</span></a><br/>
+| <a name="TRue"><span class="id" title="constructor">TRue</span></a>: <a class="idref" href="types.html#Bool"><span class="id" title="inductive">Bool</span></a><br/>
+| <a name="FAlse"><span class="id" title="constructor">FAlse</span></a>: <a class="idref" href="types.html#Bool"><span class="id" title="inductive">Bool</span></a><br/>
+| <a name="eqb"><span class="id" title="constructor">eqb</span></a> : <a class="idref" href="types.html#Bool"><span class="id" title="inductive">Bool</span></a> <a class="idref" href="http://coq.inria.fr/stdlib//Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">-&gt;</span></a> <a class="idref" href="types.html#Bool"><span class="id" title="inductive">Bool</span></a> <a class="idref" href="http://coq.inria.fr/stdlib//Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">-&gt;</span></a> <a class="idref" href="types.html#Bool"><span class="id" title="inductive">Bool</span></a><br/>
+| <a name="eqm"><span class="id" title="constructor">eqm</span></a> : <a class="idref" href="types.html#message"><span class="id" title="inductive">message</span></a><a class="idref" href="http://coq.inria.fr/stdlib//Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">-&gt;</span></a> <a class="idref" href="types.html#message"><span class="id" title="inductive">message</span></a><a class="idref" href="http://coq.inria.fr/stdlib//Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">-&gt;</span></a> <a class="idref" href="types.html#Bool"><span class="id" title="inductive">Bool</span></a><br/>
+| <a name="ifb_then_else_"><span class="id" title="constructor">ifb_then_else_</span></a> :  <a class="idref" href="types.html#Bool"><span class="id" title="inductive">Bool</span></a> <a class="idref" href="http://coq.inria.fr/stdlib//Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">-&gt;</span></a> <a class="idref" href="types.html#Bool"><span class="id" title="inductive">Bool</span></a> <a class="idref" href="http://coq.inria.fr/stdlib//Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">-&gt;</span></a> <a class="idref" href="types.html#Bool"><span class="id" title="inductive">Bool</span></a> <a class="idref" href="http://coq.inria.fr/stdlib//Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">-&gt;</span></a> <a class="idref" href="types.html#Bool"><span class="id" title="inductive">Bool</span></a>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+Notations 
+</div>
+<div class="code">
+
+<br/>
+<span class="id" title="keyword">Notation</span> <a name="9171fa14ffaf1669972ec23263cbb350"><span class="id" title="notation">&quot;</span></a>'If' c1 'then' c2 'else' c3" := (<a class="idref" href="types.html#ifm_then_else_"><span class="id" title="constructor">ifm_then_else_</span></a> <span class="id" title="var">c1</span> <span class="id" title="var">c2</span> <span class="id" title="var">c3</span>)<br/>
+(<span class="id" title="tactic">at</span> <span class="id" title="keyword">level</span> 200, <span class="id" title="tactic">right</span> <span class="id" title="keyword">associativity</span>, <span class="id" title="var">format</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"'[v   ' 'If'  c1 '/' '[' 'then'  c2  ']' '/' '[' 'else'  c3 ']' ']'").<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">Notation</span> <a name="dee0d24827d9d73278633d35268e9f28"><span class="id" title="notation">&quot;</span></a>'IF' c1 'then' c2 'else' c3" := (<a class="idref" href="types.html#ifb_then_else_"><span class="id" title="constructor">ifb_then_else_</span></a> <span class="id" title="var">c1</span> <span class="id" title="var">c2</span> <span class="id" title="var">c3</span>)<br/>
+(<span class="id" title="tactic">at</span> <span class="id" title="keyword">level</span> 200, <span class="id" title="tactic">right</span> <span class="id" title="keyword">associativity</span>, <span class="id" title="var">format</span><br/>
+"'[v   ' 'IF'  c1 '/' '[' 'then'  c2  ']' '/' '[' 'else'  c3 ']' ']'").<br/>
+</div>
+</div>
+
+<div id="footer">
+<hr/><a href="index.html">Index</a><hr/>This page has been generated by <a href="http://coq.inria.fr/">coqdoc</a>
+</div>
+
+</div>
+
+</body>
+</html>

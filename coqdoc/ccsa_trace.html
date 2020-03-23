@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<link href="coqdoc.css" rel="stylesheet" type="text/css" />
+<title>ccsa_trace</title>
+</head>
+
+<body>
+
+<div id="page">
+
+<div id="header">
+</div>
+
+<div id="main">
+
+<h1 class="libtitle">Library ccsa_trace</h1>
+
+<div class="code">
+<span class="id" title="keyword">Add</span> <span class="id" title="var">LoadPath</span> "src/".<br/>
+<span class="id" title="keyword">Require</span> <span class="id" title="keyword">Import</span> <a class="idref" href="types.html#"><span class="id" title="library">types</span></a>.<br/>
+<span class="id" title="keyword">Require</span> <span class="id" title="keyword">Import</span> <a class="idref" href="http://coq.inria.fr/stdlib//Coq.Strings.String.html#"><span class="id" title="library">String</span></a>.<br/>
+<span class="id" title="keyword">Section</span> <a name="Tree"><span class="id" title="section">Tree</span></a>.<br/>
+&nbsp;<span class="id" title="keyword">Variable</span> <a name="Tree.A"><span class="id" title="variable">A</span></a>:<span class="id" title="keyword">Type</span>.<br/>
+&nbsp;<span class="id" title="keyword">Open</span> <span class="id" title="keyword">Scope</span> <span class="id" title="var">string_scope</span>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+Tree type 
+</div>
+<div class="code">
+
+<br/>
+&nbsp;<span class="id" title="keyword">Inductive</span> <a name="Tree"><span class="id" title="inductive">Tree</span></a> <span class="id" title="var">A</span>: <span class="id" title="keyword">Type</span> :=<br/>
+&nbsp;| <a name="leaf"><span class="id" title="constructor">leaf</span></a><br/>
+&nbsp;| <a name="node"><span class="id" title="constructor">node</span></a>: <a class="idref" href="ccsa_trace.html#A"><span class="id" title="variable">A</span></a> <a class="idref" href="http://coq.inria.fr/stdlib//Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">-&gt;</span></a> <a class="idref" href="ccsa_trace.html#Tree"><span class="id" title="inductive">Tree</span></a> <a class="idref" href="ccsa_trace.html#A"><span class="id" title="variable">A</span></a> <a class="idref" href="http://coq.inria.fr/stdlib//Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">-&gt;</span></a> <a class="idref" href="ccsa_trace.html#Tree"><span class="id" title="inductive">Tree</span></a> <a class="idref" href="ccsa_trace.html#A"><span class="id" title="variable">A</span></a> <a class="idref" href="http://coq.inria.fr/stdlib//Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">-&gt;</span></a> <a class="idref" href="ccsa_trace.html#Tree"><span class="id" title="inductive">Tree</span></a> <a class="idref" href="ccsa_trace.html#A"><span class="id" title="variable">A</span></a>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+Record type to hold node info 
+</div>
+<div class="code">
+
+<br/>
+&nbsp;<span class="id" title="keyword">Record</span> <a name="State"><span class="id" title="record">State</span></a> : <span class="id" title="keyword">Set</span> := <a name="state"><span class="id" title="constructor">state</span></a> { <a name="label"><span class="id" title="projection">label</span></a>: <a class="idref" href="http://coq.inria.fr/stdlib//Coq.Strings.String.html#string"><span class="id" title="inductive">string</span></a>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a name="chk1"><span class="id" title="projection">chk1</span></a>: <a class="idref" href="types.html#Bool"><span class="id" title="inductive">Bool</span></a>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a name="chk2"><span class="id" title="projection">chk2</span></a>: <a class="idref" href="types.html#Bool"><span class="id" title="inductive">Bool</span></a>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a name="out"><span class="id" title="projection">out</span></a>: <a class="idref" href="types.html#message"><span class="id" title="inductive">message</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}.<br/>
+
+<br/>
+&nbsp;<span class="id" title="keyword">Definition</span> <a name="CCSATree"><span class="id" title="definition">CCSATree</span></a> := <a class="idref" href="ccsa_trace.html#Tree"><span class="id" title="inductive">Tree</span></a> <a class="idref" href="ccsa_trace.html#State"><span class="id" title="record">State</span></a>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+ Find depth of a given tree 
+</div>
+<div class="code">
+
+<br/>
+&nbsp;<span class="id" title="keyword">Fixpoint</span> <a name="depth"><span class="id" title="definition">depth</span></a> (<span class="id" title="var">t</span>:<a class="idref" href="ccsa_trace.html#CCSATree"><span class="id" title="definition">CCSATree</span></a>) : <a class="idref" href="http://coq.inria.fr/stdlib//Coq.Init.Datatypes.html#nat"><span class="id" title="inductive">nat</span></a> :=<br/>
+&nbsp;&nbsp;&nbsp;<span class="id" title="keyword">match</span> <a class="idref" href="ccsa_trace.html#t"><span class="id" title="variable">t</span></a> <span class="id" title="keyword">with</span><br/>
+&nbsp;&nbsp;&nbsp;| <a class="idref" href="ccsa_trace.html#leaf"><span class="id" title="constructor">leaf</span></a> <span class="id" title="var">_</span> =&gt; 0<br/>
+&nbsp;&nbsp;&nbsp;| <a class="idref" href="ccsa_trace.html#node"><span class="id" title="constructor">node</span></a> <span class="id" title="var">_</span> <span class="id" title="var">x</span> <span class="id" title="var">l</span> <span class="id" title="var">r</span> =&gt; 1 <a class="idref" href="http://coq.inria.fr/stdlib//Coq.Init.Peano.html#0dacc1786c5ba797d47dd85006231633"><span class="id" title="notation">+</span></a> <a class="idref" href="http://coq.inria.fr/stdlib//Coq.Init.Peano.html#0dacc1786c5ba797d47dd85006231633"><span class="id" title="notation">(</span></a><a class="idref" href="http://coq.inria.fr/stdlib//Coq.Init.Peano.html#max"><span class="id" title="abbreviation">max</span></a> (<a class="idref" href="ccsa_trace.html#depth"><span class="id" title="definition">depth</span></a> <span class="id" title="var">l</span>) (<a class="idref" href="ccsa_trace.html#depth"><span class="id" title="definition">depth</span></a> <span class="id" title="var">r</span>)<a class="idref" href="http://coq.inria.fr/stdlib//Coq.Init.Peano.html#0dacc1786c5ba797d47dd85006231633"><span class="id" title="notation">)</span></a><br/>
+&nbsp;&nbsp;&nbsp;<span class="id" title="keyword">end</span>.<br/>
+
+<br/>
+&nbsp;<span class="id" title="keyword">Definition</span> <a name="emptySt"><span class="id" title="definition">emptySt</span></a> := <a class="idref" href="ccsa_trace.html#state"><span class="id" title="constructor">state</span></a> "" <a class="idref" href="types.html#TRue"><span class="id" title="constructor">TRue</span></a> <a class="idref" href="types.html#TRue"><span class="id" title="constructor">TRue</span></a> <a class="idref" href="types.html#O"><span class="id" title="constructor">O</span></a>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+get folded term for the given level 
+</div>
+<div class="code">
+
+<br/>
+&nbsp;<span class="id" title="keyword">Fixpoint</span> <a name="foldedTerm"><span class="id" title="definition">foldedTerm</span></a> (<span class="id" title="var">a</span>: <a class="idref" href="ccsa_trace.html#CCSATree"><span class="id" title="definition">CCSATree</span></a>) (<span class="id" title="var">n</span>:<a class="idref" href="http://coq.inria.fr/stdlib//Coq.Init.Datatypes.html#nat"><span class="id" title="inductive">nat</span></a>) :=<br/>
+&nbsp;&nbsp;&nbsp;<span class="id" title="keyword">match</span> <a class="idref" href="ccsa_trace.html#a"><span class="id" title="variable">a</span></a>, <a class="idref" href="ccsa_trace.html#n"><span class="id" title="variable">n</span></a> <span class="id" title="keyword">with</span><br/>
+&nbsp;&nbsp;&nbsp;| <a class="idref" href="ccsa_trace.html#leaf"><span class="id" title="constructor">leaf</span></a> <span class="id" title="var">_</span>, <span class="id" title="var">_</span> =&gt; <a class="idref" href="types.html#O"><span class="id" title="constructor">O</span></a><br/>
+&nbsp;&nbsp;&nbsp;| <a class="idref" href="ccsa_trace.html#node"><span class="id" title="constructor">node</span></a> <span class="id" title="var">_</span> <span class="id" title="var">x</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span>, 0 =&gt; (<a class="idref" href="ccsa_trace.html#out"><span class="id" title="projection">out</span></a> <span class="id" title="var">x</span>)<br/>
+&nbsp;&nbsp;&nbsp;| <a class="idref" href="ccsa_trace.html#node"><span class="id" title="constructor">node</span></a> <span class="id" title="var">_</span> <span class="id" title="var">x</span> <span class="id" title="var">l</span> <span class="id" title="var">r</span>, <a class="idref" href="http://coq.inria.fr/stdlib//Coq.Init.Datatypes.html#S"><span class="id" title="constructor">S</span></a> <span class="id" title="var">n</span> =&gt; (<a class="idref" href="types.html#9171fa14ffaf1669972ec23263cbb350"><span class="id" title="notation">If</span></a> <a class="idref" href="types.html#9171fa14ffaf1669972ec23263cbb350"><span class="id" title="notation">(</span></a><a class="idref" href="ccsa_trace.html#chk1"><span class="id" title="projection">chk1</span></a> <span class="id" title="var">x</span><a class="idref" href="types.html#9171fa14ffaf1669972ec23263cbb350"><span class="id" title="notation">)</span></a> <a class="idref" href="types.html#9171fa14ffaf1669972ec23263cbb350"><span class="id" title="notation">then</span></a> <a class="idref" href="types.html#9171fa14ffaf1669972ec23263cbb350"><span class="id" title="notation">(</span></a><a class="idref" href="ccsa_trace.html#foldedTerm"><span class="id" title="definition">foldedTerm</span></a> <span class="id" title="var">l</span> <a class="idref" href="ccsa_trace.html#n"><span class="id" title="variable">n</span></a><a class="idref" href="types.html#9171fa14ffaf1669972ec23263cbb350"><span class="id" title="notation">)</span></a> <a class="idref" href="types.html#9171fa14ffaf1669972ec23263cbb350"><span class="id" title="notation">else</span></a> <a class="idref" href="types.html#9171fa14ffaf1669972ec23263cbb350"><span class="id" title="notation">(</span></a><a class="idref" href="types.html#9171fa14ffaf1669972ec23263cbb350"><span class="id" title="notation">If</span></a> <a class="idref" href="types.html#9171fa14ffaf1669972ec23263cbb350"><span class="id" title="notation">(</span></a><a class="idref" href="ccsa_trace.html#chk2"><span class="id" title="projection">chk2</span></a> <span class="id" title="var">x</span><a class="idref" href="types.html#9171fa14ffaf1669972ec23263cbb350"><span class="id" title="notation">)</span></a> <a class="idref" href="types.html#9171fa14ffaf1669972ec23263cbb350"><span class="id" title="notation">then</span></a> <a class="idref" href="types.html#9171fa14ffaf1669972ec23263cbb350"><span class="id" title="notation">(</span></a><a class="idref" href="ccsa_trace.html#foldedTerm"><span class="id" title="definition">foldedTerm</span></a> <span class="id" title="var">r</span> <a class="idref" href="ccsa_trace.html#n"><span class="id" title="variable">n</span></a><a class="idref" href="types.html#9171fa14ffaf1669972ec23263cbb350"><span class="id" title="notation">)</span></a>  <a class="idref" href="types.html#9171fa14ffaf1669972ec23263cbb350"><span class="id" title="notation">else</span></a> <a class="idref" href="types.html#O"><span class="id" title="constructor">O</span></a><a class="idref" href="types.html#9171fa14ffaf1669972ec23263cbb350"><span class="id" title="notation">)</span></a>)<br/>
+&nbsp;&nbsp;&nbsp;<span class="id" title="keyword">end</span>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+trace of a protocol given as a tree 
+</div>
+<div class="code">
+
+<br/>
+&nbsp;<span class="id" title="keyword">Fixpoint</span> <a name="ccsaTrace"><span class="id" title="definition">ccsaTrace</span></a> (<span class="id" title="var">a</span>: <a class="idref" href="ccsa_trace.html#CCSATree"><span class="id" title="definition">CCSATree</span></a>) (<span class="id" title="var">d</span>: <a class="idref" href="http://coq.inria.fr/stdlib//Coq.Init.Datatypes.html#nat"><span class="id" title="inductive">nat</span></a>) :=<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">match</span> <a class="idref" href="ccsa_trace.html#a"><span class="id" title="variable">a</span></a>, <a class="idref" href="ccsa_trace.html#d"><span class="id" title="variable">d</span></a> <span class="id" title="keyword">with</span><br/>
+&nbsp;&nbsp;| <span class="id" title="var">_</span> , 0 =&gt; <a class="idref" href="http://coq.inria.fr/stdlib//Coq.Init.Datatypes.html#nil"><span class="id" title="constructor">nil</span></a><br/>
+&nbsp;&nbsp;| <span class="id" title="var">xs</span> , <a class="idref" href="http://coq.inria.fr/stdlib//Coq.Init.Datatypes.html#S"><span class="id" title="constructor">S</span></a> <span class="id" title="var">n</span> =&gt;  <a class="idref" href="http://coq.inria.fr/stdlib//Coq.Init.Datatypes.html#app"><span class="id" title="definition">app</span></a> (<a class="idref" href="ccsa_trace.html#ccsaTrace"><span class="id" title="definition">ccsaTrace</span></a> <span class="id" title="var">xs</span> <span class="id" title="var">n</span>) (<a class="idref" href="http://coq.inria.fr/stdlib//Coq.Init.Datatypes.html#cons"><span class="id" title="constructor">cons</span></a> (<a class="idref" href="ccsa_trace.html#foldedTerm"><span class="id" title="definition">foldedTerm</span></a> <span class="id" title="var">xs</span> (<a class="idref" href="http://coq.inria.fr/stdlib//Coq.Init.Datatypes.html#S"><span class="id" title="constructor">S</span></a> <span class="id" title="var">n</span>)) <a class="idref" href="http://coq.inria.fr/stdlib//Coq.Init.Datatypes.html#nil"><span class="id" title="constructor">nil</span></a>)<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">end</span>.<br/>
+
+<br/>
+&nbsp;<span class="id" title="keyword">Definition</span> <a name="lf"><span class="id" title="definition">lf</span></a> {<span class="id" title="var">A</span>:<span class="id" title="keyword">Type</span>} := (<a class="idref" href="ccsa_trace.html#leaf"><span class="id" title="constructor">leaf</span></a> <a class="idref" href="ccsa_trace.html#A"><span class="id" title="variable">A</span></a>).<br/>
+
+<br/>
+&nbsp;<span class="id" title="keyword">Variables</span> <a name="Tree.theta1"><span class="id" title="variable">theta1</span></a> <a name="Tree.theta2"><span class="id" title="variable">theta2</span></a> <a name="Tree.theta3"><span class="id" title="variable">theta3</span></a> <a name="Tree.theta4"><span class="id" title="variable">theta4</span></a> : <a class="idref" href="types.html#Bool"><span class="id" title="inductive">Bool</span></a>.<br/>
+&nbsp;<span class="id" title="keyword">Variables</span> <a name="Tree.t1"><span class="id" title="variable">t1</span></a> <a name="Tree.t2"><span class="id" title="variable">t2</span></a>: <a class="idref" href="types.html#message"><span class="id" title="inductive">message</span></a>.<br/>
+&nbsp;<span class="id" title="keyword">Definition</span> <a name="exTree"><span class="id" title="definition">exTree</span></a> := (<a class="idref" href="ccsa_trace.html#node"><span class="id" title="constructor">node</span></a> <span class="id" title="var">_</span> (<a class="idref" href="ccsa_trace.html#state"><span class="id" title="constructor">state</span></a> "q^00_00" <a class="idref" href="ccsa_trace.html#Tree.theta1"><span class="id" title="variable">theta1</span></a> <a class="idref" href="ccsa_trace.html#Tree.theta2"><span class="id" title="variable">theta2</span></a> <a class="idref" href="ccsa_trace.html#Tree.t1"><span class="id" title="variable">t1</span></a>) (<a class="idref" href="ccsa_trace.html#node"><span class="id" title="constructor">node</span></a> <span class="id" title="var">_</span> (<a class="idref" href="ccsa_trace.html#state"><span class="id" title="constructor">state</span></a> "q^10_00" <a class="idref" href="ccsa_trace.html#Tree.theta3"><span class="id" title="variable">theta3</span></a> <a class="idref" href="ccsa_trace.html#Tree.theta4"><span class="id" title="variable">theta4</span></a> <a class="idref" href="ccsa_trace.html#Tree.t2"><span class="id" title="variable">t2</span></a>) <a class="idref" href="ccsa_trace.html#lf"><span class="id" title="definition">lf</span></a> <a class="idref" href="ccsa_trace.html#lf"><span class="id" title="definition">lf</span></a>) <a class="idref" href="ccsa_trace.html#lf"><span class="id" title="definition">lf</span></a>).<br/>
+
+<br/>
+&nbsp;<span class="id" title="keyword">Close</span> <span class="id" title="keyword">Scope</span> <span class="id" title="var">string_scope</span>.<br/>
+<span class="id" title="keyword">End</span> <a class="idref" href="ccsa_trace.html#Tree"><span class="id" title="section">Tree</span></a>.<br/>
+</div>
+</div>
+
+<div id="footer">
+<hr/><a href="index.html">Index</a><hr/>This page has been generated by <a href="http://coq.inria.fr/">coqdoc</a>
+</div>
+
+</div>
+
+</body>
+</html>
