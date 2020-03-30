@@ -1,4 +1,4 @@
 
-*/coqdoc/* linguist-vendored
+src/coqdoc/* linguist-vendored
 src/*.v linguist-vendored=false
 
